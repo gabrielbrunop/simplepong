@@ -1,2 +1,2 @@
 # simplepong
-A simple ping pong game created with PixiJS
+A simple ping pong game created with [PixiJS](https://github.com/pixijs/pixi.js)
