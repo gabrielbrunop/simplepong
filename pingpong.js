@@ -1,5 +1,4 @@
 const loader = PIXI.Loader.shared;
-const Sprite = PIXI.Sprite;
 
 const PLAYER_YSIZE = 100;
 const PLAYER_XSIZE = 5;
