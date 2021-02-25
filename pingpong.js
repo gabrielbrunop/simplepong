@@ -318,16 +318,25 @@ function moveBall(delta) {
     ball.x += ball.vx * delta;
     ball.y += ball.vy * delta;
 
-    if (isTopBorder(ball.y, ball.vy) || isBottomBorder(ball.y + ball.height, ball.vy)) {
-        ball.vy = -ball.vy;
+    if (isTopBorder(ball.y, ball.vy)) {
+        if (ball.vy < 0) {
+            ball.vy = -ball.vy;
+            sounds.get("ball1").play();
+        }
+    }
 
-        sounds.get("ball1").play();
+    if (isBottomBorder(ball.y + ball.height, ball.vy)) {
+        if (ball.vy > 0) {
+            ball.vy = -ball.vy;
+            sounds.get("ball1").play();
+        }
     }
 
     if (isRightBorder(ball.x + ball.width, ball.vx)) {
-        ball.vx = -ball.vx;
-
-        sounds.get("ball1").play();
+        if (ball.vx > 0) {
+            ball.vx = -ball.vx;
+            sounds.get("ball1").play();
+        }
     }
 
     if (isLeftBorder(ball.x, ball.vx)) {
@@ -335,9 +344,10 @@ function moveBall(delta) {
     }
 
     if (ballPlayerHit(player, ball)) {
-        ball.vx = -ball.vx;
-
-        sounds.get("ball1").play();
+        if (ball.vx < 0) {
+            ball.vx = -ball.vx;
+            sounds.get("ball1").play();
+        }
     }
 }
 
